@@ -2,6 +2,8 @@
 
 A macOS Automator Quick Action that types clipboard contents character-by-character — useful for paste-restricted fields (VDI, Citrix, locked web forms).
 
+![Automator workflow preview](preview.png)
+
 ## Why use this?
 
 Many remote desktop and virtual environments block `Cmd+V` paste. Tools like [Mac-AutoType](https://github.com/user/mac-autotype) solve this, but require installing a third-party application.
