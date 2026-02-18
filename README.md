@@ -51,7 +51,9 @@ For managed Macs, IT can pre-approve the Accessibility permission via a PPPC (Pr
 
 1. Copy text to the clipboard as usual (`Cmd+C`)
 2. Click into the paste-restricted field
-3. Trigger the shortcut — the text will be typed out character-by-character
+3. Trigger autotype via **App menu → Services → autotype**
+
+> **Note:** Keyboard shortcuts for Services don't always work reliably (macOS may not forward them in all apps or contexts). The app menu is the most reliable way to invoke the workflow.
 
 ## License
 
