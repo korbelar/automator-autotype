@@ -41,19 +41,15 @@ The workflow contains a single "Run AppleScript" action that:
 
 For managed Macs, IT can pre-approve the Accessibility permission via a PPPC (Privacy Preferences Policy Control) configuration profile targeting `com.apple.automator.runner` (or the relevant bundle ID of the calling application).
 
-## Setting up a keyboard shortcut
+### Optional: keyboard shortcut
 
-1. Open **System Settings → Keyboard → Keyboard Shortcuts → Services** (on Ventura+: **System Settings → Keyboard → Keyboard Shortcuts → App Shortcuts** may also work)
-2. Find **autotype** under **General**
-3. Assign your preferred shortcut (e.g. `Ctrl+Cmd+V`)
+You can optionally assign a shortcut in **System Settings → Keyboard → Keyboard Shortcuts → Services** — find **autotype** under **General**. Note that keyboard shortcuts for Services don't always work reliably in all apps.
 
 ## Usage
 
 1. Copy text to the clipboard as usual (`Cmd+C`)
 2. Click into the paste-restricted field
 3. Trigger autotype via **App menu → Services → autotype**
-
-> **Note:** Keyboard shortcuts for Services don't always work reliably (macOS may not forward them in all apps or contexts). The app menu is the most reliable way to invoke the workflow.
 
 ## License
 
