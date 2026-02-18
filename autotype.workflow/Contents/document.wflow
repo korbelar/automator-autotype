@@ -52,18 +52,52 @@
 				<dict>
 					<key>source</key>
 					<string>on run {input, parameters}
-    set clipboardText to (the clipboard as string)
+    -- Check for empty or non-text clipboard
+    try
+        set clipboardText to (the clipboard as string)
+    on error
+        display notification "Clipboard is empty or contains non-text data." with title "autotype"
+        return input
+    end try
 
-    repeat with i from 1 to length of clipboardText
+    if clipboardText is "" then
+        display notification "Clipboard is empty." with title "autotype"
+        return input
+    end if
+
+    set charCount to length of clipboardText
+    display notification "Typing " &amp; charCount &amp; " characters…" with title "autotype"
+
+    -- Brief pause so the user can focus the target field
+    delay 0.5
+
+    repeat with i from 1 to charCount
         set currentChar to character i of clipboardText
-        if currentChar = return then
+        set charCode to id of currentChar
+
+        if currentChar = return or charCode = 10 then
+            -- Enter / newline
             tell application "System Events" to key code 36
-        else
+        else if currentChar = tab then
+            -- Tab
+            tell application "System Events" to key code 48
+        else if charCode ≥ 32 and charCode ≤ 126 then
+            -- Printable ASCII — type directly
             tell application "System Events" to keystroke currentChar
+        else
+            -- Non-ASCII / special Unicode — paste via clipboard
+            set the clipboard to currentChar
+            tell application "System Events" to keystroke "v" using command down
+            delay 0.05
         end if
         delay 0.01
     end repeat
-    
+
+    -- Restore original clipboard contents
+    set the clipboard to clipboardText
+
+    display notification "Done — " &amp; charCount &amp; " characters typed." with title "autotype"
+
     return input
 end run</string>
 				</dict>

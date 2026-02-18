@@ -18,11 +18,15 @@ Many remote desktop and virtual environments block `Cmd+V` paste. Tools like [Ma
 
 The workflow contains a single "Run AppleScript" action that:
 
-1. Reads the current clipboard contents
-2. Iterates over each character
-3. Sends each character as a keystroke via `System Events`
-4. Handles newlines by simulating the Return key
-5. Adds a tiny delay (`0.01s`) between keystrokes for reliability
+1. Checks the clipboard is non-empty (shows a notification if it is)
+2. Displays a "Typing N characters…" notification
+3. Iterates over each character and sends it as a keystroke via `System Events`
+   - **Return / linefeed** → simulates the Return key
+   - **Tab** → simulates the Tab key
+   - **Printable ASCII** (32–126) → typed directly via `keystroke`
+   - **Non-ASCII / Unicode** (emoji, accented chars, etc.) → pasted individually via clipboard fallback
+4. Restores the original clipboard contents when done
+5. Displays a "Done" notification
 
 ## Installation
 
