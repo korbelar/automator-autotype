@@ -51,6 +51,20 @@ You can optionally assign a shortcut in **System Settings → Keyboard → Keybo
 2. Click into the paste-restricted field
 3. Trigger autotype via **App menu → Services → autotype**
 
+## Compatibility
+
+Works with paste-restricted environments including:
+
+- **Citrix Workspace** / Citrix Virtual Apps and Desktops
+- **VMware Horizon** (View Client)
+- **Microsoft Remote Desktop** (RDP)
+- **AWS WorkSpaces**
+- **Parallels RAS**
+- **Browser-based VDI** (e.g. Apache Guacamole, Amazon AppStream)
+- **Paste-disabled web forms** (banking portals, exam platforms, corporate intranets)
+
+If a field blocks `Cmd+V`, autotype can bypass it by simulating individual keystrokes.
+
 ## License
 
 [MIT](LICENSE)
